@@ -101,7 +101,7 @@ const onSubmit = (e) => {
             </div>
             <div className="form-group">
                 <input 
-                type="number" 
+                type="text" 
                 className="form-control" 
                 id="socialSecurityNumber" 
                 name='socialSecurityNumber'
