@@ -66,8 +66,8 @@ const EmployeeSchema = mongoose.Schema(
       maxlength: [8, 'No more than 8 digits'],
     },
     licenseExpireDate: {
-      type: Date,
-      required: [true, 'Please add a license expiration date'],
+      type: String,
+      maxlength: [20, 'Please add a license expiration date'],
     },
     phoneNumber: {
       type: String,
