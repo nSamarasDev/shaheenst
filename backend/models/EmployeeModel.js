@@ -56,9 +56,13 @@ const EmployeeSchema = mongoose.Schema(
       ],
     },
     socialSecurityNumber: {
-      type: Number,
+      type: String,
       required: [true, 'Please add a social security number'],
       maxlength: [9, 'No more than 9 digits'],
+      match: [
+        /^(?!666|000|9\d{2})\d{3}[- ]{0,1}(?!00)\d{2}[- ]{0,1}(?!0{4})\d{4}$/,
+        'Please add a valid social security number format',
+      ],
     },
     driversLicenseNumber: {
       type: Number,
