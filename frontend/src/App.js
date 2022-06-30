@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Header from './components/Header';
 import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
-import NewEmployee from './pages/NewEmpolyee';
+import NewEmployee from './pages/NewEmployee';
 import Login from './pages/Login';
 import Register from './pages/Register';
 
