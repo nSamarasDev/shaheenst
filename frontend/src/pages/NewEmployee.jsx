@@ -1,9 +1,14 @@
 import React from 'react'
 import { FaUser } from 'react-icons/fa'
-import {useState} from 'react'
-import {useSelector} from 'react-redux'
+import {useState, useEffect} from 'react'
+import {useSelector, useDispatch} from 'react-redux'
+import {useNavigate} from 'react-router-dom'
+import {toast} from 'react-toastify'
+import {createEmployee, reset} from '../features/employees/employeeSlice'
+import Spinner from '../components/Spinner'
 
 function NewEmpolyee() {
+  const {isLoading, isError, isSuccess, message} = useSelector((state) => state.employees)
   const [formData, setFormData] = useState({
     firstName: '',
     middleName: '',
@@ -28,6 +33,9 @@ const {
   address 
 } = formData
 
+const dispatch = useDispatch()
+const navigate = useNavigate()
+
 const onChange = (e) => {
   setFormData((prevState) => ({
       ...prevState,
@@ -35,9 +43,36 @@ const onChange = (e) => {
   }))
 }
 
+useEffect(() => {
+  if(isError) {
+    toast.error(message)
+  }
+
+  if(isSuccess) {
+    dispatch(reset())
+    navigate('/employees')
+  }
+
+  dispatch(reset())
+}, [dispatch, isError, isSuccess, navigate, message])
+
 const onSubmit = (e) => {
   e.preventDefault()
-  console.log(formData)
+  dispatch(createEmployee({
+  firstName, 
+  middleName, 
+  lastName, 
+  email, 
+  socialSecurityNumber, 
+  driversLicenseNumber, 
+  licenseExpireDate, 
+  phoneNumber, 
+  address 
+  }))
+}
+
+if(isLoading) {
+  return <Spinner />
 }
 
   return (
