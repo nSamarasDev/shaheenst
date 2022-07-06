@@ -23,7 +23,7 @@ const EmployeeSchema = mongoose.Schema(
     status: {
       type: String,
       required: true,
-      enum: ['new', 'open', 'employeed'],
+      enum: ['new', 'prior employment', 'currently employeed'],
       default: 'new',
     },
     address: {
