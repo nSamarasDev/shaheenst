@@ -6,6 +6,7 @@ import {useNavigate} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import {createEmployee, reset} from '../features/employees/employeeSlice'
 import Spinner from '../components/Spinner'
+import BackButton from '../components/BackButton'
 
 function NewEmpolyee() {
   const {isLoading, isError, isSuccess, message} = useSelector((state) => state.employees)
@@ -77,6 +78,7 @@ if(isLoading) {
 
   return (
     <>
+    <BackButton url='/' />
     <section className="heading">
         <h1>
             <FaUser /> Enter new employee's information 
