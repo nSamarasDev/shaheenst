@@ -50,6 +50,46 @@ export const getEmployees = createAsyncThunk(
   }
 );
 
+// Get employee
+export const getEmployee = createAsyncThunk(
+  'employees/get',
+  async (employeeId, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await employeeService.getEmployee(employeeId, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+// close employee
+export const closeEmployee = createAsyncThunk(
+  'employees/close',
+  async (employeeId, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await employeeService.closeEmployee(employeeId, token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 export const employeeSlice = createSlice({
   name: 'employees',
   initialState,
@@ -82,6 +122,27 @@ export const employeeSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+      })
+      .addCase(getEmployee.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getEmployee.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.employee = action.payload;
+      })
+      .addCase(getEmployee.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(closeEmployee.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.employees.map((employee) =>
+          employee._id === action.payload._id
+            ? (employee.status = 'closed')
+            : employee
+        );
       });
   },
 });
