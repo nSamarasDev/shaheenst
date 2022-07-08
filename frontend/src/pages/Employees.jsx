@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Spinner from '../components/Spinner'
 import BackButton from '../components/BackButton'
 import { reset, getEmployees } from '../features/employees/employeeSlice'
-//import TicketItem from '../components/TicketItem'
+import EmployeeItem from '../components/EmployeeItem'
 
 function Employees() {
   const { employees, isLoading, isSuccess } = useSelector(
@@ -35,13 +35,13 @@ function Employees() {
       <div className='tickets'>
         <div className='ticket-headings'>
           <div>Date</div>
-          <div>:</div>
+          <div>Slug</div>
           <div>Status</div>
           <div></div>
         </div>
-        {/*{employees.map((employee) => (
-          <TicketItem key={ticket._id} ticket={ticket} />
-        ))}*/}
+        {employees.map((employee) => (
+          <EmployeeItem key={employee._id} employee={employee} />
+        ))}
       </div>
     </>
   )
