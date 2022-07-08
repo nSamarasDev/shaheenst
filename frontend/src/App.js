@@ -6,7 +6,9 @@ import Header from './components/Header';
 import PrivateRoute from './components/PrivateRoute';
 import Home from './pages/Home';
 import Employees from './pages/Employees';
+import Employee from './pages/Employee';
 import NewEmployee from './pages/NewEmployee';
+
 import Login from './pages/Login';
 import Register from './pages/Register';
 
@@ -27,6 +29,10 @@ function App() {
 
             <Route path='/employees' element={<PrivateRoute />}>
               <Route path='/employees' element={<Employees />} />
+            </Route>
+
+            <Route path='/employee/:employeeId' element={<PrivateRoute />}>
+              <Route path='/employee/:employeeId' element={<Employee />} />
             </Route>
           </Routes>
         </div>
