@@ -86,12 +86,12 @@ function Employee() {
             <hr />
             <div className='ticket-desc'>
                 <h3>Employee Information</h3>
-                <p>First Name:  {employee.firstName}</p>
+               <strong><p>First Name:  {employee.firstName}</p></strong>
                 <p>Middle Name: {employee.middleName}</p>
                 <p>Last Name: {employee.lastName}</p>
                 <p>Email: {employee.email}</p>
-                <p>Social Security Number: {employee.socialSecurityNumber}</p>
-                <p>Drivers License Number: {employee.driversLicenseNumber}</p>
+                <strong><p>Social Security Number: {employee.socialSecurityNumber}</p></strong>
+                <strong><p>Drivers License Number: {employee.driversLicenseNumber}</p></strong>
                 <p>License State & Expire Date: {employee.licenseExpireDate}</p>
                 <p>Phone Number: {employee.phoneNumber}</p>
                 <p>Address: {employee.address}</p>
