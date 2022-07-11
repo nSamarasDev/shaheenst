@@ -15,6 +15,7 @@ function NewEmpolyee() {
     middleName: '',
     lastName: '',
     email: '',
+    status: '',
     socialSecurityNumber: '',
     driversLicenseNumber: '',
     licenseExpireDate: '',
@@ -26,7 +27,8 @@ const {
   firstName, 
   middleName, 
   lastName, 
-  email, 
+  email,
+  status, 
   socialSecurityNumber, 
   driversLicenseNumber, 
   licenseExpireDate, 
@@ -63,7 +65,8 @@ const onSubmit = (e) => {
   firstName, 
   middleName, 
   lastName, 
-  email, 
+  email,
+  status, 
   socialSecurityNumber, 
   driversLicenseNumber, 
   licenseExpireDate, 
@@ -140,18 +143,30 @@ if(isLoading) {
                 <input 
                 type="text" 
                 className="form-control" 
+                id="status" 
+                name='status'
+                value={status}
+                onChange={onChange} 
+                placeholder='Please enter employee status as new, current, or closed' 
+                required
+                />
+            </div>
+            <div className="form-group">
+                <input 
+                type="text" 
+                className="form-control" 
                 id="socialSecurityNumber" 
                 name='socialSecurityNumber'
                 value={socialSecurityNumber}
                 onChange={onChange} 
-                placeholder='Enter employees social security number' 
+                placeholder='Enter employees social security number. Numbers only' 
                 required
                 />
             </div>
 
             <div className="form-group">
                 <input 
-                type="number" 
+                type="text" 
                 className="form-control" 
                 id="driversLicenseNumber" 
                 name='driversLicenseNumber'
