@@ -22,8 +22,7 @@ const EmployeeSchema = mongoose.Schema(
     status: {
       type: String,
       required: true,
-      enum: ['new', 'closed', 'currently employeed'],
-      default: 'new',
+      enum: ['new', 'closed', 'current'],
     },
     address: {
       type: String,
@@ -48,13 +47,13 @@ const EmployeeSchema = mongoose.Schema(
       ],
     },
     driversLicenseNumber: {
-      type: Number,
+      type: String,
       required: [true, 'Please add a drivers license number'],
-      maxlength: [8, 'No more than 8 digits'],
+      maxlength: [20, 'No more than 20 charactors'],
     },
     licenseExpireDate: {
       type: String,
-      maxlength: [20, 'Please add a license expiration date'],
+      maxlength: [20, 'Please add a license State and expiration date'],
     },
     phoneNumber: {
       type: String,
