@@ -29,6 +29,7 @@ const createEmployee = asyncHandler(async (req, res) => {
     middleName,
     lastName,
     email,
+    status,
     socialSecurityNumber,
     driversLicenseNumber,
     licenseExpireDate,
@@ -41,6 +42,7 @@ const createEmployee = asyncHandler(async (req, res) => {
     !middleName ||
     !lastName ||
     !email ||
+    !status ||
     !socialSecurityNumber ||
     !driversLicenseNumber ||
     !licenseExpireDate ||
@@ -64,13 +66,13 @@ const createEmployee = asyncHandler(async (req, res) => {
     middleName,
     lastName,
     email,
+    status,
     socialSecurityNumber,
     driversLicenseNumber,
     licenseExpireDate,
     phoneNumber,
     address,
     user: req.user.id,
-    status: 'new',
   });
 
   res.status(201).json(employee);
