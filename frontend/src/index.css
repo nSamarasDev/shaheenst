@@ -238,19 +238,19 @@ h3 {
 }
 
 .status-new {
-  background-color: green;
+  background-color: rgb(2, 139, 2);
   color: #fff;
   border-radius: 10px;
 }
 
-.status-open {
-  background-color: steelblue;
+.status-current {
+  background-color: rgb(5, 21, 168);
   color: #fff;
   border-radius: 10px;
 }
 
 .status-closed {
-  background-color: darkred;
+  background-color: rgb(171, 3, 3);
   color: #fff;
   border-radius: 10px;
 }
