@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react'
+import {Link} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import Modal from 'react-modal'
 import {FaPlus} from 'react-icons/fa'
@@ -82,7 +83,9 @@ function Employee() {
                 </span>
             </h2>
             <h3>Date Created: {new Date(employee.createdAt).toLocaleString('en-US')}</h3>
-            <h3>Add Somthing Else: // Note from developer</h3>
+            <h3>Add something else :</h3> <Link to={`/employee/${employee._id}/update`} className='button1 btn btn-sm'>
+            Click to correct or update information
+        </Link>
             <hr />
             <div className='ticket-desc'>
                 <h3>Employee Information</h3>
