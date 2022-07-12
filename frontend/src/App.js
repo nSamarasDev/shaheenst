@@ -8,6 +8,7 @@ import Home from './pages/Home';
 import Employees from './pages/Employees';
 import Employee from './pages/Employee';
 import NewEmployee from './pages/NewEmployee';
+import UpdateEmployee from './pages/UpdateEmployee'
 
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -34,6 +35,12 @@ function App() {
             <Route path='/employee/:employeeId' element={<PrivateRoute />}>
               <Route path='/employee/:employeeId' element={<Employee />} />
             </Route>
+
+            <Route path='/employee/:employeeId/update' element={<PrivateRoute />}>
+              <Route path='/employee/:employeeId/update' element={<UpdateEmployee />} />
+            </Route>
+
+            
           </Routes>
         </div>
       </Router>
