@@ -9,7 +9,7 @@ function EmployeeItem({employee}) {
         <div className={`status status-${employee.status}`}>
             {employee.status}
         </div>
-        <Link to={`/employee/${employee._id}`} className='btn btn-reverse btn-sm'>
+        <Link to={`/employee/${employee._id}`} className='btn btn-reverse button1 btn-sm'>
             View
         </Link>
     </div>
