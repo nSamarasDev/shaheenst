@@ -81,7 +81,7 @@ function Employee() {
                 <span className={`status status-${employee.status}`}>
                     {employee.status}
                 </span>
-            </h2>
+            </h2 >
             <h3>Date Created: {new Date(employee.createdAt).toLocaleString('en-US')}</h3>
             <h3>Add something else :</h3> <Link to={`/employee/${employee._id}/update`} className='button1 btn btn-sm'>
             Click to correct or update information
@@ -89,7 +89,9 @@ function Employee() {
             <hr />
             <div className='ticket-desc'>
                 <h3>Employee Information</h3>
+                <hr />
                <strong><p>First Name:  {employee.firstName}</p></strong>
+               
                 <p>Middle Name: {employee.middleName}</p>
                 <p>Last Name: {employee.lastName}</p>
                 <p>Email: {employee.email}</p>
@@ -97,13 +99,13 @@ function Employee() {
                 <strong><p>Drivers License Number: {employee.driversLicenseNumber}</p></strong>
                 <p>License State & Expire Date: {employee.licenseExpireDate}</p>
                 <p>Phone Number: {employee.phoneNumber}</p>
-                <p>Address: {employee.address}</p>
+                <p>Address:{employee.address}</p>
             </div>
             <h2>Notes</h2>
         </header>
 
         {employee.status !== 'closed' && (
-            <button onClick={openModal} className='btn'><FaPlus /> Add Note</button>
+            <button onClick={openModal} className='btn button1'><FaPlus /> Add Note</button>
         )}
 
 <Modal
@@ -140,7 +142,7 @@ function Employee() {
       ))}
 
         {employee.status !== 'closed' && (
-            <button onClick={onEmployeeClose} className='btn btn-block btn-danger'>Close Out Employee</button>
+            <button onClick={onEmployeeClose} className='btn btn-block btn-danger button1'>Close Out Employee</button>
         )}
         
     </div>
