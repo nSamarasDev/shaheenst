@@ -1,11 +1,10 @@
 import React from 'react'
 import axios from 'axios'
-import Input from '../components/Input'
 import { FaUser } from 'react-icons/fa'
 import {useState, useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import {useNavigate, useParams} from 'react-router-dom'
-import {updateEmployee} from '../features/employees/employeeSlice'
+import {createEmployee, updateEmployee, reset} from '../features/employees/employeeSlice'
 import {toast} from 'react-toastify'
 import BackButton from '../components/BackButton'
 import Spinner from '../components/Spinner'
@@ -13,7 +12,7 @@ import Spinner from '../components/Spinner'
 
 function UpdateEmployee() {
   const {employee} = useSelector((state) => state.employees)
-  const {isLoading,} = useSelector((state) => state.employees)
+  const {isLoading, isError, isSuccess, message} = useSelector((state) => state.employees)
 
 
 
@@ -53,27 +52,40 @@ const onChange = (e) => {
   }))
 }
 
-const submitHandler = (e) => {
-  e.preventDefault()
-  console.log(e.target[0].value)  
+useEffect(() => {
+  if(isError) {
+    toast.error(message)
+  }
 
-}
+  //if(isSuccess) {
+  //  dispatch(reset())
+  //  //navigate('/employees')
+  //}
 
-//const submitHandler = (e) => {
+  dispatch(reset())
+}, [dispatch, isError, isSuccess, navigate, message])
+
+//const onSubmit = (e) => {
 //  e.preventDefault()
-//  dispatch(updateEmployee({
-//  firstName, 
-//  middleName, 
-//  lastName, 
-//  email,
-//  status, 
-//  socialSecurityNumber, 
-//  driversLicenseNumber, 
-//  licenseExpireDate, 
-//  phoneNumber, 
-//  address 
-//  }))
+//  console.log(e.target[0].value)  
+
 //}
+
+const onSubmit = (e) => {
+  e.preventDefault()
+  dispatch(updateEmployee({
+  firstName, 
+  middleName, 
+  lastName, 
+  email,
+  status, 
+  socialSecurityNumber, 
+  driversLicenseNumber, 
+  licenseExpireDate, 
+  phoneNumber, 
+  address 
+  }))
+}
 
 if(isLoading) {
   return <Spinner />
@@ -81,20 +93,19 @@ if(isLoading) {
 
   return (
     <>
-      <BackButton url='/' />
-       <section className="heading">
+    <BackButton url='/' />
+    <section className="heading">
         <h1>
-          <FaUser /> Update Information
+            <FaUser /> Update Driver information 
         </h1>
-        <p>Please update driver information</p>
+        <p>Please create the new account</p>
     </section>
 
     <section className="form">
-        <form onSubmit={submitHandler}>
-          <Input />
+        <form onSubmit={onSubmit}>
             <div className="form-group">
                 <input 
-                type="text"  
+                type="text" 
                 className="form-control" 
                 id="firstName" 
                 name='firstName'
@@ -224,5 +235,4 @@ if(isLoading) {
     </>
   )
 }
-
 export default UpdateEmployee
