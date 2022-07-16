@@ -90,7 +90,7 @@ export const closeEmployee = createAsyncThunk(
   }
 );
 
-// Update employee
+// update employee
 export const updateEmployee = createAsyncThunk(
   'employees/update',
   async (employeeId, thunkAPI) => {
