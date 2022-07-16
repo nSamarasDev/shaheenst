@@ -16,8 +16,10 @@ router.use('/:employeeId/notes', noteRouter);
 
 router.route('/').get(protect, getEmployees).post(protect, createEmployee);
 
-router.route('/:id/update').put(protect, updateEmployee);
-
-router.route('/:id').get(protect, getEmployee).delete(protect, deleteEmployee);
+router
+  .route('/:id')
+  .get(protect, getEmployee)
+  .delete(protect, deleteEmployee)
+  .put(protect, updateEmployee);
 
 module.exports = router;
