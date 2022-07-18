@@ -11,6 +11,10 @@ body {
   height: 100vh;
 }
 
+.padding1 {
+  padding-bottom: 25px;
+}
+
 a {
   text-decoration: none;
   color: #000;
