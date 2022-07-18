@@ -1,3 +1,4 @@
+import React from 'react';
 import { useSelector } from 'react-redux';
 
 function NoteItem({ note }) {
@@ -8,7 +9,7 @@ function NoteItem({ note }) {
       className='note'
       style={{
         backgroundColor: note.isStaff ? 'rgba(0,0,0,0.7)' : '#fff',
-        color: note.isStaff ? '#fff' : '#000',
+        Color: note.isStaff ? '#fff' : '#000',
       }}
     >
       <h4>
