@@ -93,10 +93,10 @@ export const closeEmployee = createAsyncThunk(
 // update employee
 export const updateEmployee = createAsyncThunk(
   'employees/update',
-  async (employeeId, thunkAPI) => {
+  async ({ formData, employeeId }, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
-      return await employeeService.updateEmployee(employeeId, token);
+      return await employeeService.updateEmployee(formData, employeeId, token);
     } catch (error) {
       const message =
         (error.response &&
@@ -161,6 +161,15 @@ export const employeeSlice = createSlice({
         state.employees.map((employee) =>
           employee._id === action.payload._id
             ? (employee.status = 'closed')
+            : employee
+        );
+      })
+      .addCase(updateEmployee.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.employees.map((employee) =>
+          employee._id === action.payload._id
+            ? (employee = action.payload)
             : employee
         );
       });
