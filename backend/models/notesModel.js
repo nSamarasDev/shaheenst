@@ -7,7 +7,7 @@ const noteSchema = mongoose.Schema(
       required: true,
       ref: 'User',
     },
-    ticket: {
+    employee: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: 'Employee',
