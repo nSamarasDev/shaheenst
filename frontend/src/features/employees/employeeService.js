@@ -58,11 +58,29 @@ const closeEmployee = async (employeeId, token) => {
   return response.data;
 };
 
+// close employee
+const updateEmployee = async (formData, employeeId, token) => {
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const response = await axios.put(
+    API_URL + employeeId,
+    { ...formData },
+    config
+  );
+
+  return response.data;
+};
+
 const employeeService = {
   createEmployee,
   getEmployees,
   getEmployee,
   closeEmployee,
+  updateEmployee,
 };
 
 export default employeeService;
