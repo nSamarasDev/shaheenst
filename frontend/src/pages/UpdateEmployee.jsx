@@ -44,6 +44,7 @@ const {
 
 const dispatch = useDispatch()
 const navigate = useNavigate()
+const {employeeId} = useParams()
 
 const onChange = (e) => {
   setFormData((prevState) => ({
@@ -52,18 +53,7 @@ const onChange = (e) => {
   }))
 }
 
-useEffect(() => {
-  if(isError) {
-    toast.error(message)
-  }
 
-  //if(isSuccess) {
-  //  dispatch(reset())
-  //  //navigate('/employees')
-  //}
-
-  dispatch(reset())
-}, [dispatch, isError, isSuccess, navigate, message])
 
 //const onSubmit = (e) => {
 //  e.preventDefault()
@@ -74,18 +64,18 @@ useEffect(() => {
 const onSubmit = (e) => {
   e.preventDefault()
   dispatch(updateEmployee({
-  firstName, 
-  middleName, 
-  lastName, 
-  email,
-  status, 
-  socialSecurityNumber, 
-  driversLicenseNumber, 
-  licenseExpireDate, 
-  phoneNumber, 
-  address 
+  employeeId,
+  formData,
   }))
 }
+useEffect(() => {
+  if(isError) {
+    toast.error(message)
+  }
+
+  dispatch(reset())
+}, [dispatch, isError, message])
+
 
 if(isLoading) {
   return <Spinner />
@@ -93,14 +83,18 @@ if(isLoading) {
 
   return (
     <>
-    <BackButton url='/' />
+     <BackButton url='/employees' />
     <section className="heading">
         <h1>
             <FaUser /> Update Driver information 
         </h1>
         <p>Please create the new account</p>
     </section>
-
+        <section className='padding1'>
+        <div>
+           <p>Please press the big back button after submit you submit new information</p>
+        </div>
+        </section>
     <section className="form">
         <form onSubmit={onSubmit}>
             <div className="form-group">
@@ -225,10 +219,12 @@ if(isLoading) {
                 required
                 />
             </div>
+            
             <div className="form-group">
                 <button className='btn btn-block'>
                     Submit
                 </button>
+                
             </div>
         </form>
     </section>
