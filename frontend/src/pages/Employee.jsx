@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
 import {toast} from 'react-toastify'
 import Modal from 'react-modal'
-import {FaPlus} from 'react-icons/fa'
+import {FaPlus, FaTrash} from 'react-icons/fa'
 import {useSelector, useDispatch} from 'react-redux'
 import {getEmployee, closeEmployee} from '../features/employees/employeeSlice'
 import {getNotes, createNote,  reset as notesReset,} from '../features/notes/noteSlice'
@@ -22,7 +22,7 @@ const customStyles = {
       transform: 'translate(-50%, -50%)',
       position: 'relative',
     },
-  }
+}
 
   Modal.setAppElement('#root')
 
@@ -59,6 +59,7 @@ function Employee() {
     dispatch(createNote({ noteText, employeeId }))
     closeModal()
   }
+
 
 // Open/close modal
   const openModal = () => setModalIsOpen(true)
