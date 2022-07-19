@@ -58,7 +58,7 @@ const closeEmployee = async (employeeId, token) => {
   return response.data;
 };
 
-// close employee
+// update employee
 const updateEmployee = async (formData, employeeId, token) => {
   const config = {
     headers: {
