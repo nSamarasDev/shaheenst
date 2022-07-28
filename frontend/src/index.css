@@ -396,6 +396,25 @@ footer {
   }
 }
 
+.grid-container {
+  display: grid;
+  max-width: 1160px;
+  margin: 10px auto;
+  padding: 10px;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 10px;
+}
+
+.item {
+ background: steelBlue;
+ color: #fff;
+ font-size: 20px;
+ padding: 20px;
+ border: skyBlue 1px solid;
+ margin: 5px;
+}
+
+
 @media (max-width: 600px) {
   .boxes {
     grid-template-columns: 1fr;
