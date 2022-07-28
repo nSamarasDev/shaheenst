@@ -88,19 +88,25 @@ function Employee() {
             Click to correct or update information
         </Link>
             <hr />
-            <div className='ticket-desc'>
-                <h3>Employee Information</h3>
-                <hr />
-               <strong><p>First Name:  {employee.firstName}</p></strong>
-               
-                <p>Middle Name: {employee.middleName}</p>
-                <p>Last Name: {employee.lastName}</p>
-                <p>Email: {employee.email}</p>
-                <strong><p>Social Security Number: {employee.socialSecurityNumber}</p></strong>
-                <strong><p>Drivers License Number: {employee.driversLicenseNumber}</p></strong>
-                <p>License State & Expire Date: {employee.licenseExpireDate}</p>
-                <p>Phone Number: {employee.phoneNumber}</p>
-                <p>Address:{employee.address}</p>
+            <div className='grid-container'>
+              <div className="item">First Name:</div>
+              <div className="item">{employee.firstName}</div>
+              <div className="item">Middle Name:</div>
+              <div className="item">{employee.middleName}</div>
+              <div className="item">Last Name:</div>
+              <div className="item">{employee.lastName}</div>
+              <div className="item">Email:</div>
+              <div className="item">{employee.email}</div>
+              <div className="item">Social Security Number:</div>
+              <div className="item">{employee.socialSecurityNumber}</div>
+              <div className="item">Drivers License Number:</div>
+              <div className="item">{employee.driversLicenseNumber}</div>
+              <div className="item">License State & Expire Date:</div>
+              <div className="item">{employee.licenseExpireDate}</div>
+              <div className="item">Phone Number:</div>
+              <div className="item">{employee.phoneNumber}</div>
+              <div className="item">Address:</div>
+              <div className="item">{employee.address}</div>
             </div>
             <h2>Notes</h2>
         </header>
